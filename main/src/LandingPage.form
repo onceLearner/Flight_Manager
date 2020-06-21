@@ -24,7 +24,7 @@
           <text value="mot de passe"/>
         </properties>
       </component>
-      <component id="7ed96" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+      <component id="7ed96" class="javax.swing.JTextField" binding="loginTxt">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -34,7 +34,7 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="4ff2c" class="javax.swing.JPasswordField" binding="passwordField1" default-binding="true">
+      <component id="4ff2c" class="javax.swing.JPasswordField" binding="pwdTxt">
         <constraints>
           <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
