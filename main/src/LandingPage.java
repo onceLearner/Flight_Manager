@@ -17,6 +17,7 @@ public class LandingPage  extends  JFrame {
     private JTextField loginTxt;
     private JPanel root_pannel;
     private JButton AuthBtn;
+    private JButton creerUnCompteButton;
     private JButton AutkBtn;
 
 
@@ -54,6 +55,13 @@ public class LandingPage  extends  JFrame {
                 } catch (ClassNotFoundException classNotFoundException) {
                     classNotFoundException.printStackTrace();
                 }
+            }
+        });
+        creerUnCompteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new SignUp().setVisible(true);
             }
         });
     }

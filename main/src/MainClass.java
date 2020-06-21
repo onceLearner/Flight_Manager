@@ -5,8 +5,10 @@ public class MainClass  {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         LandingPage landingPage=new LandingPage();
         VoyageurInterface voyageurInterface= new VoyageurInterface();
+        SignUp signUp=new SignUp();
         voyageurInterface.setVisible(false);
         landingPage.setVisible(true);
+        signUp.setVisible(false);
 //        Connection con=DbMethods.connect();
 //
 //        ArrayList<?> result=DbMethods.query("select compagnie from avion",1);

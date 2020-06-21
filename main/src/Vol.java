@@ -3,14 +3,6 @@ public class Vol {
     private String idAvion;
     private String dateDepart;
 
-    public String getDateDepart() {
-        return dateDepart;
-    }
-
-    public void setDateDepart(String dateDepart) {
-        this.dateDepart = dateDepart;
-    }
-
     private String heureDepart;
     private String heureArrive;
     private String aeroportDepart;
@@ -29,6 +21,14 @@ public class Vol {
 
     }
 
+
+    public String getDateDepart() {
+        return dateDepart;
+    }
+
+    public void setDateDepart(String dateDepart) {
+        this.dateDepart = dateDepart;
+    }
 
     public String getIdVol() {
         return idVol;
