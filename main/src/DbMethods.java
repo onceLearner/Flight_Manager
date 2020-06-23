@@ -1,3 +1,10 @@
+import com.sun.javafx.scene.control.skin.TableHeaderRow;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -34,10 +41,14 @@ public class DbMethods {
         ResultSet rs=stmt.executeQuery(user_query);
 
         while (rs.next()){
-            ArrayList<String> rows=new ArrayList<String>();
+            ArrayList<String> row=new ArrayList<>();
 
-            for(int j=1;j<=Number_of_collumn;j++)  rows.add(rs.getString(j));
-            returned_array.add(rows);
+
+            for(int j=0;j<Number_of_collumn;j++)  row.add(rs.getString(j+1));
+            returned_array.add(row);
+
+
+
         }
         con.close();
         return returned_array;
@@ -45,6 +56,52 @@ public class DbMethods {
 
 
     }
+
+    // function to  populate the data inside the table
+    public static void resultSetToTableModel(ResultSet rs, JTable table, String [] columns_header) throws SQLException{
+        //Create new table model
+        DefaultTableModel tableModel = new DefaultTableModel();
+
+
+        // adding the header
+
+
+        //Retrieve meta data from ResultSet
+        ResultSetMetaData metaData = rs.getMetaData();
+
+        //Get number of columns from meta data
+        int columnCount = metaData.getColumnCount();
+
+        //Get all column names from meta data and add columns to table model
+        for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++){
+            tableModel.addColumn(metaData.getColumnLabel(columnIndex));
+        }
+
+        //Create array of Objects with size of column count from meta data
+        Object[] row = new Object[columnCount];
+
+        tableModel.addRow(columns_header);
+
+        //Scroll through result set
+        while (rs.next()){
+            //Get object from column with specific index of result set to array of objects
+            for (int i = 0; i < columnCount; i++){
+                row[i] = rs.getObject(i+1);
+
+            }
+            //Now add row to table model with that array of objects as an argument
+            tableModel.addRow(row);
+
+        }
+
+
+
+        //Now add that table model to your table and you are done :D
+
+        table.setModel(tableModel);
+
+    }
+
 
 
 

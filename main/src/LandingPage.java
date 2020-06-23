@@ -39,6 +39,8 @@ public class LandingPage  extends  JFrame {
                     String  qr="select login from utilisateur where login='"+loginTxt.getText()+"' and pwd='"+pwdTxt.getText()+"' and role='"+Role+"'";
 
                     ArrayList<?> users=DbMethods.query(qr,1);
+
+                    System.out.println(users);
                     if (users.isEmpty())  {
                     JOptionPane.showMessageDialog(null,
                             "utilisateur inexistant",
@@ -48,7 +50,10 @@ public class LandingPage  extends  JFrame {
                         int res = JOptionPane.showOptionDialog(null, "Hello", "Test", JOptionPane.DEFAULT_OPTION,
                                 JOptionPane.INFORMATION_MESSAGE, null, null, null);
                       VoyageurInterface vgi=new VoyageurInterface();
-                      if(res==0) {dispose(); vgi.setVisible(true);};
+                      if(res==0) {dispose();
+                      if (Role.equals("voyageur")) vgi.setVisible(true);
+                      new AdminInterf().setVisible(true);
+                      };
                     }
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();

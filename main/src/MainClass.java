@@ -7,8 +7,10 @@ public class MainClass  {
         VoyageurInterface voyageurInterface= new VoyageurInterface();
         SignUp signUp=new SignUp();
         voyageurInterface.setVisible(false);
-        landingPage.setVisible(true);
+        landingPage.setVisible(false);
         signUp.setVisible(false);
+        new Table().setVisible(false);
+        new AdminInterf().setVisible(true);
 //        Connection con=DbMethods.connect();
 //
 //        ArrayList<?> result=DbMethods.query("select compagnie from avion",1);
