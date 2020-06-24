@@ -1,16 +1,16 @@
 import java.sql.*;
-import java.util.ArrayList;
 
 public class MainClass  {
+
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         LandingPage landingPage=new LandingPage();
-        VoyageurInterface voyageurInterface= new VoyageurInterface();
+
         SignUp signUp=new SignUp();
-        voyageurInterface.setVisible(false);
-        landingPage.setVisible(false);
+        landingPage.setVisible(true);
         signUp.setVisible(false);
-        new Table().setVisible(false);
-        new AdminInterf().setVisible(true);
+//        new Table().setVisible(true);
+        new AdminInterf().setVisible(false);
+
 //        Connection con=DbMethods.connect();
 //
 //        ArrayList<?> result=DbMethods.query("select compagnie from avion",1);
@@ -19,6 +19,7 @@ public class MainClass  {
     }
 
 }
+
 
 
 

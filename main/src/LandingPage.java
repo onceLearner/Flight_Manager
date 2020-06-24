@@ -49,10 +49,10 @@ public class LandingPage  extends  JFrame {
                     else {
                         int res = JOptionPane.showOptionDialog(null, "Hello", "Test", JOptionPane.DEFAULT_OPTION,
                                 JOptionPane.INFORMATION_MESSAGE, null, null, null);
-                      VoyageurInterface vgi=new VoyageurInterface();
+                      VoyageurInterface vgi=new VoyageurInterface(loginTxt.getText());
                       if(res==0) {dispose();
                       if (Role.equals("voyageur")) vgi.setVisible(true);
-                      new AdminInterf().setVisible(true);
+                      else new AdminInterf().setVisible(true);
                       };
                     }
                 } catch (SQLException throwables) {

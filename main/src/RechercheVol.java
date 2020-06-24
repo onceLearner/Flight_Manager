@@ -1,13 +1,7 @@
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
-import java.util.ArrayList;
 
 public class RechercheVol extends  JFrame {
     private JTextField apDepart;
@@ -16,26 +10,31 @@ public class RechercheVol extends  JFrame {
     private JTextField apArrive;
     private JTextField dDepart;
     private JTable tbVols;
+    private JTextField idVolAresever;
+    private JButton reserverBtn;
+    private JLabel idVollable;
 
 
-
-
-
-    public RechercheVol(){
+    public RechercheVol(int isShown,String login){
         add(mainPl);
         setTitle("hello in my first app");
-        setSize(600,400);
+        setSize(700,450);
         dDepart.setText("2020-06-30");
 
-        String[] columns_header = {"Depart","Destination","date Depart","heure depart","heure arrive","duree","compagnie"};
+        String[] columns_header = {"idVol","Depart","Destination","date Depart","heure depart","heure arrive","duree","compagnie"};
 
+        if(isShown==0){
+            reserverBtn.setVisible(false);
+            idVolAresever.setVisible(false);
+            idVollable.setVisible(false);
+        }
 
 
 
         rechercherButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String qr=String.format("select aeroportDepart,aeroportArrive,dateDepart,heureDepart, heureArrive, duree,compagnie from vol natural join avion " +
+                String qr=String.format("select idVol,aeroportDepart,aeroportArrive,dateDepart,heureDepart, heureArrive, duree,compagnie from vol natural join avion " +
                         "where dateDepart='%s'and aeroportDepart='%s' and aeroportArrive='%s'",dDepart.getText(),apDepart.getText().toLowerCase(),apArrive.getText().toLowerCase());
                 try {
 
@@ -55,6 +54,14 @@ public class RechercheVol extends  JFrame {
             }
         });
 
+        reserverBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                    dispose();
+                    new Place(idVolAresever.getText(),login).setVisible(true);
+
+            }
+        });
     }
 }
 // TODO: 21/06/2020 you have to add headings to tables

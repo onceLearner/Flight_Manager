@@ -24,7 +24,7 @@ public class SignUp  extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String userquer=String.format("insert into utilisateur values ('%s','%s','voyageur')",login.getText(),pwd1.getText());
                 String VayageurQuery=String.format("insert into voyageur values('%s','%s','%s','%s','%s')",
-                        login.getText(),pssport.getText(),prenom.getText(),nom.getText(),adress.getText());
+                        pssport.getText(),prenom.getText(),nom.getText(),adress.getText(),login.getText());
                 try {
                     Connection con=DbMethods.connect();
                     // create the mysql insert preparedstatement
@@ -41,7 +41,7 @@ public class SignUp  extends JFrame {
                          int res = JOptionPane.showOptionDialog(null, "Succes! \n" +
                                          "veuillez vous connecter ", "Test", JOptionPane.DEFAULT_OPTION,
                                  JOptionPane.INFORMATION_MESSAGE, null, null, null);
-                         VoyageurInterface vgi=new VoyageurInterface();
+
                          if(res==0) {dispose();  new LandingPage().setVisible(true);};
                      }
                      else {
